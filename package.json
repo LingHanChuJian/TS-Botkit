@@ -1,0 +1,23 @@
+{
+  "name": "ts-botkit",
+  "version": "1.0.0",
+  "description": "凌寒初见辅助机器人",
+  "main": "bot.ts",
+  "license": "MIT",
+  "author": "凌寒初见",
+  "scripts": {
+    "start": "tsc && node dist/bot.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "botbuilder-adapter-web": "^1.0.8",
+    "botbuilder-storage-mongodb": "^0.9.5",
+    "botkit": "^4.9.0",
+    "botkit-plugin-cms": "^1.0.3",
+    "dotenv": "^7.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.6"
+  }
+}
