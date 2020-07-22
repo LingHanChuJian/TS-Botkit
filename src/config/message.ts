@@ -1,6 +1,7 @@
+import marked from 'marked'
 import { Message } from './../types/config'
 
-export const message: Message[] = [
+const message: Message[] = [
     {
         reply: ['Hi,Wanderer!', '我是凌寒初见', '我就是一个死宅 !!'],
         event: ['hello'],
@@ -59,7 +60,15 @@ export const message: Message[] = [
     },
     {
         monitor: '为啥取名叫凌寒初见?',
-        reply: ['这个名字对我来说有很重要的意义', '但是如果你从哪里看见这个名字，那么不用怀疑就是我', '那么请仔细研究下我的blog吧！'],
+        reply: ['这个名字对我来说有很重要的意义(笑)', '但是如果你从哪里看见这个名字，那么不用怀疑就是我(假)', '那么请仔细研究下我的blog吧!'],
         event: ['message', 'direct_message'],
     }
 ]
+
+for (let i = 0, len = message.length; i < len; i++) {
+    message[i].reply = Array.isArray(message[i].reply) ? (message[i].reply as string[]).map((item) => marked(item)) : marked((message[i].reply as string))
+}
+
+export {
+    message,
+}

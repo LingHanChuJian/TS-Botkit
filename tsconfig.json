@@ -15,17 +15,13 @@
     "paths": {
       "*": [
         "src/*",
-        "types/*",
-        "public/*"
+        "types/*"
       ],
     },
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
-    "src/bot.ts"
+    "src",
+    "public"
   ],
   "exclude": [
     "node_modules"

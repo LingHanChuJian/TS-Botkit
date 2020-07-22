@@ -15,9 +15,11 @@
     "botbuilder-storage-mongodb": "^0.9.5",
     "botkit": "^4.9.0",
     "botkit-plugin-cms": "^1.0.3",
-    "dotenv": "^7.0.0"
+    "dotenv": "^7.0.0",
+    "marked": "^1.1.1"
   },
   "devDependencies": {
+    "@types/marked": "^1.1.0",
     "typescript": "^3.9.6"
   }
 }
