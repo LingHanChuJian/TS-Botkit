@@ -1,4 +1,5 @@
 import { message } from './../config/message'
+import { wait } from './../utils/assist'
 import { Botkit, BotWorker, BotkitMessage } from 'botkit'
 
 export const interrupts = (controller: Botkit) => {
@@ -9,6 +10,7 @@ export const interrupts = (controller: Botkit) => {
             if (message[i].reply instanceof Array) {
                 for (let j = 0, jLen = message[i].reply.length; j < jLen; j++) {
                     resp = { text: message[i].reply[j] }
+                    await wait(j * 500)
                     await bot.reply(msg, resp)
                 }
             } else {

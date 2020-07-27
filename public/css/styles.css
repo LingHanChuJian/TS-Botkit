@@ -5,8 +5,57 @@ h2 {
 
 .botkit {
     margin: 0 auto;
+    padding: 20px 20px 0 20px;
     width: 800px;
     min-height: 300px;
     background-color: rgba(242, 242, 242, 0.5);
     border-radius: 10px;
+}
+
+.message-content {
+    margin: 10px 0;
+    min-height: 20px;
+}
+
+.conversation {
+    display: inline-block;
+    max-width: 85%;
+    padding: 7px 13px;
+    border-radius: 15px;
+    color: #595a5a;
+    background-color: #ebebeb;
+}
+
+.message {
+    animation: left-right-move .5s;
+}
+
+.user-message {
+    animation: right-left-move .5s;
+}
+
+@keyframes left-right-move {
+
+  from {
+        transform: translateX(-15px);
+        opacity: 0;
+    }
+
+  to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes right-left-move {
+
+  from {
+        transform: translate(15px);
+        opacity: 0;
+    }
+
+  to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

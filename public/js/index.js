@@ -53,7 +53,7 @@ const connectWebsocket = () => {
     socket.addEventListener('message', (event) => {
         try {
             const message = JSON.parse(event.data)
-            console.log(message)
+            renderMessage(socket, message)
         } catch(e) {
             console.error(e)
         }
@@ -81,11 +81,37 @@ const sendWebsocket = (socket, message) => {
     socket.send(JSON.stringify(message))
 }
 
-const render = (message) => {
-    const template = `
-        <div class="${message.type}"></div>
-    `
+const renderMessage = (socket, message) => {
+    const messageContentDiv = document.createElement('div')
+    messageContentDiv.className = 'message-content'
+    const messageDiv = document.createElement('div')
+    messageDiv.className = `conversation ${message.type}`
+    messageDiv.innerHTML = message.text
+    messageContentDiv.appendChild(messageDiv)
+    document.querySelector('div.botkit-dialogue').appendChild(messageContentDiv)
+    if (message.hasOwnProperty('options')) { renderOptions(socket, message.options) }
 }
+
+const renderOptions = (socket, options) => {
+    removeOptions()
+
+    const optionsUl = document.createElement('ul')
+    for (let i = 0, len = options.length; i < len; i++) {
+        const optionsLi = document.createElement('li')
+        optionsLi.innerText = options[i].title
+        optionsLi.addEventListener('click', () => {
+            removeOptions()
+            renderMessage(socket, { type: 'user-message', text: options[i].payload })
+            sendWebsocket(socket, { type: 'message', text: options[i].payload, user: UUID, channel: 'socket' })
+        })
+        optionsUl.appendChild(optionsLi)
+    }
+
+    document.querySelector('div.botkit-options').appendChild(optionsUl)
+}
+
+const removeOptions = () => { document.querySelector('div.botkit-options').innerHTML = '' }
 
 connectWebsocket()
 
+            

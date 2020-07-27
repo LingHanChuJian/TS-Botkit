@@ -70,3 +70,8 @@ export const handleManyJson = (value: BaseObject): BaseObject => {
     }
     return modules
 }
+
+// 等待
+export const wait = (time: number): Promise<any> => {
+    return new Promise((resolve) => { setTimeout(() => resolve(), time) })
+}

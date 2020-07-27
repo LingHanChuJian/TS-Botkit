@@ -1,3 +1,4 @@
+import { wait } from './../utils/assist'
 import { message } from './../config/message'
 import { MessageOptions } from './../types/config'
 import { Botkit, BotWorker, BotkitMessage } from 'botkit'
@@ -12,6 +13,7 @@ export const echo = (controller: Botkit) => {
                 for (let j = 0, jLen = message[i].reply.length; j < jLen; j++) {
                     resp = { text: message[i].reply[j] }
                     if (j === jLen - 1 && message[i].options) { resp.options = message[i].options as MessageOptions[] }
+                    await wait(j * 500)
                     await bot.reply(msg, resp)
                 }
             } else {
