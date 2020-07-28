@@ -101,8 +101,8 @@ const renderOptions = (options) => {
         optionsButton.innerHTML = options[i].title
         optionsButton.addEventListener('click', () => {
             removeOptions()
-            renderMessage({ type: 'user-message', text: options[i].payload })
-            sendWebsocket({ type: 'message', text: options[i].payload, user: UUID, channel: 'socket' })
+            renderMessage({ type: 'user-message', text: options[i].title })
+            setTimeout(() => sendWebsocket({ type: 'message', text: options[i].payload, user: UUID, channel: 'socket' }), 500)
         })
         document.querySelector('div.botkit-options').appendChild(optionsButton)
     }
