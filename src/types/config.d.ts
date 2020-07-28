@@ -4,7 +4,7 @@ export interface MessageOptions {
 }
 
 export interface Message {
-    monitor?: string
+    monitor?: string | RegExp | Array<string | RegExp>
     reply: string | string[]
     event: string[]
     options?: MessageOptions[]

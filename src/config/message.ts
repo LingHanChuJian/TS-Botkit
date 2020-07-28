@@ -66,7 +66,7 @@ const message: Message[] = [
 ]
 
 for (let i = 0, len = message.length; i < len; i++) {
-    message[i].reply = Array.isArray(message[i].reply) ? (message[i].reply as string[]).map((item) => marked(item)) : marked((message[i].reply as string))
+    message[i].reply = message[i].reply instanceof Array ? (message[i].reply as string[]).map((item) => marked(item)) : marked((message[i].reply as string))
 }
 
 export {
