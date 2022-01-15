@@ -16,7 +16,7 @@
     "botkit": "^4.9.0",
     "botkit-plugin-cms": "^1.0.3",
     "dotenv": "^7.0.0",
-    "marked": "^1.1.1"
+    "marked": "^4.0.10"
   },
   "devDependencies": {
     "@types/marked": "^1.1.0",
